@@ -7,7 +7,7 @@
  * @file
  * @ingroup Skins
  */
- 
+
 /**
  * QuickTemplate class for Neverland skin
  * @ingroup Skins
@@ -202,7 +202,7 @@ class AetherTemplate extends BaseTemplate {
             <div class="col-12 col-lg-3 mt-2 sidebar noprint" valign="top">
                 <div class="card">
                     <!-- logo -->
-                        <img src="<?php echo $GLOBALS['wgScriptPath']; ?>/skins/Neverland/images/sidebar-logo.png" alt="" />
+                    <!--    <img src="<?php echo $GLOBALS['wgScriptPath']; ?>/skins/Neverland/images/sidebar-logo.png" alt="" /> -->
                     <!-- /logo -->
 
                     <ul class="list-unstyled ml-2 mr-2">
@@ -218,63 +218,123 @@ class AetherTemplate extends BaseTemplate {
         </div>
 
         <!-- /content -->
+    </main>
 
-        <!-- footer -->
-        <div id="footerRow">
-            <div class="navbar navbar-bottom Neverland" <?php $this->html( 'userlangattributes' ) ?>>
-                <div class="navbar-inner">
-                    <div class="container">
-                        <?php
-                            foreach( $this->getFooterLinks() as $category => $links ):
-                                if ( $category == 'places' ):
-                                    ?>
-                                        <ul id="footer-<?php echo $category ?>" class="nav">
-                                            <?php foreach( $links as $link ): ?>
-                                                <li>
-                                                    <i class="icon-<?php echo $link ?> icon-white"></i>
-                                                    <?php $this->html( $link ) ?>
-                                                </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    <?php
-                                endif;
-                            endforeach;
-                        ?>
+    <!-- footer -->
+    <footer id="kFooter" class="footer">
+        <section id="kFooterIncome" class="container">
+            <div id="kDonateForm">
+                <div class="center">
+                    <h3>Donate to KDE <a href="/community/donations/index.php#money" target="_blank">Why Donate?</a></h3>
+                    <form action="https://www.paypal.com/en_US/cgi-bin/webscr" method="post" onsubmit="return amount.value >= 2 || window.confirm('Your donation is smaller than 2€. This means that most of your donation\nwill end up in processing fees. Do you want to continue?');">
+                            <input type="hidden" name="cmd" value="_donations">
+                            <input type="hidden" name="lc" value="GB">
+                            <input type="hidden" name="item_name" value="Development and communication of KDE software">
+                            <input type="hidden" name="custom" value="//kde.org//donation_box">
+                            <input type="hidden" name="currency_code" value="EUR">
+                            <input type="hidden" name="cbt" value="Return to kde.org">
+                            <input type="hidden" name="return" value="https://kde.org/community/donations/thanks_paypal">
+                            <input type="hidden" name="notify_url" value="https://kde.org/community/donations/notify.php">
+                            <input type="hidden" name="business" value="kde-ev-paypal@kde.org">
+                            <input type="text" name="amount" value="20.00" id="donateAmountField" data-_extension-text-contrast=""> €
+                            <button type="submit" id="donateSubmit" data-_extension-text-contrast="">Donate via PayPal</button>
+                    </form>
 
-                        <ul class="nav pull-right">
-                            <li id="global-nav-links" class="dropdown dropdown-hover">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#global-nav-links">
-                                    <i class="icon-list icon-white"></i>
-                                    KDE Links
-                                    <b class="caret-up"></b>
-                                </a>
-
-                                <ul id="global-nav" class="dropdown-menu bottom-up"></ul>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href="/community/donations/others" id="otherWaysDonate" target="_blank">Other ways to donate</a>
                 </div>
             </div>
+            <div id="kMetaStore">
+                <div class="center">
+                    <h3>Visit the KDE MetaStore</h3>
+                    <p>Show your love for KDE! Purchase books, mugs, apparel, and more to support KDE.</p>
+                    <a href="/stuff/metastore" class="button">Click here to browse</a>
+                </div>
+            </div>
+        </section>
 
-            <footer class="Neverland">
-                <?php
-                    foreach( $this->getFooterLinks() as $category => $links ) {
-                        if ( $category == 'legals' ) {
-                            foreach( $links as $link ) {
-                                $this->html( $link );
+        <section id="kLinks" class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <h3>About Wiki</h3>
+                    <?php
+                        foreach($this->getFooterLinks() as $category => $links) {
+                            if ($category == 'places') {
+                                foreach( $links as $link ) {
+                                    $this->html($link);
+                                }
                             }
                         }
-                    }
-                ?>
-            </footer>
-        </div>
-        <!-- /footer -->
+                    ?>
+                </nav>
 
-        <?php $this->printTrail(); ?>
-        <script type="text/javascript" src="https://cdn.kde.org/aether/js/jquery.min.js"></script>
-        <script type="text/javascript" src="https://cdn.kde.org/aether/js/popper.min.js"></script>
-        <script type="text/javascript" src="https://cdn.kde.org/aether/js/bootstrap.min.js"></script>
-    </body>
+                <nav class="col-sm">
+                    <h3>Products</h3>
+                    <a href="/plasma-desktop">Plasma</a>
+                    <a href="/applications/">KDE Applications</a>
+                    <a href="/products/frameworks/">KDE Frameworks</a>
+                    <a href="https://plasma-mobile.org/overview/">Plasma Mobile</a>
+                    <a href="https://neon.kde.org/">KDE neon</a>
+                    <a href="https://wikitolearn.org/" target="_blank">WikiToLearn</a>
+                </nav>
+
+                <nav class="col-sm">
+                    <h3>Develop</h3>
+                    <a href="https://techbase.kde.org/">TechBase Wiki</a>
+                    <a href="https://api.kde.org/">API Documentation</a>
+                    <a href="https://doc.qt.io/" target="_blank">Qt Documentation</a>
+                    <a href="https://inqlude.org/" target="_blank">Inqlude Documentation</a>
+                </nav>
+
+                <nav class="col-sm">
+                    <h3>News &amp; Press</h3>
+                    <a href="/announcements/">Announcements</a>
+                    <a href="https://dot.kde.org/">KDE.news</a>
+                    <a href="https://planetkde.org/">Planet KDE</a>
+                    <a href="https://www.kde.org/screenshots">Screenshots</a>
+                    <a href="https://www.kde.org/contact/">Press Contact</a>
+                </nav>
+
+                <nav class="col-sm">
+                    <h3>Resources</h3>
+                    <a href="https://community.kde.org/Main_Page">Community Wiki</a>
+                    <a href="https://userbase.kde.org/">UserBase Wiki</a>
+                    <a href="/stuff/">Miscellaneous Stuff</a>
+                    <a href="/support/">Support</a>
+                    <a href="/support/international.php">International Websites</a>
+                    <a href="/download/">Download KDE Software</a>
+                    <a href="/code-of-conduct/">Code of Conduct</a>
+                </nav>
+
+                <nav class="col-sm">
+                    <h3>Destinations</h3>
+                    <a href="https://store.kde.org/">KDE Store</a>
+                    <a href="https://ev.kde.org/">KDE e.V.</a>
+                    <a href="https://www.kde.org/community/whatiskde/kdefreeqtfoundation.php">KDE Free Qt Foundation</a>
+                    <a href="https://timeline.kde.org/">KDE Timeline</a>
+                </nav>
+            </div>
+        </section>
+
+        <section id="kLegal" class="container">
+            <div class="row">
+                <small class="col-4">
+                    Maintained by <a href="mailto:kde-webmaster@kde.org">KDE Webmasters</a>
+                </small>
+                <small class="col-8" style="text-align: right;">
+                    KDE<sup>®</sup> and <a href="/media/images/trademark_kde_gear_black_logo.png">the K Desktop Environment<sup>®</sup> logo</a> are registered trademarks of <a href="https://ev.kde.org/" title="Homepage of the KDE non-profit Organization">KDE e.V.</a> |
+                    <a href="https://www.kde.org/community/whatiskde/impressum">Legal</a>
+                </small>
+            </div>
+        </section>
+    </footer>
+    <!-- /footer -->
+
+    <?php $this->printTrail(); ?>
+    <script type="text/javascript" src="https://cdn.kde.org/aether/js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.kde.org/aether/js/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdn.kde.org/aether/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/skins/Aether/resources/main.js"></script>
+</body>
 </html>
 
 <?php
