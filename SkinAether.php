@@ -46,8 +46,8 @@ class SkinAether extends SkinTemplate {
      * @param $out OutputPage object
      */
     function setupSkinUserCss( OutputPage $out ){
-        $out->addStyle( 'https://cdn.kde.org/aether/css/bootstrap.min.css', 'screen' );
-        $out->addStyle(  $this->stylename . '/resources/main.css', 'screen' );
+        $out->addStyle( 'https://cdn.kde.org/aether/css/bootstrap.min.css', 'all' );
+        $out->addStyle(  $this->stylename . '/resources/main.css', 'all' );
     }
 
     /**

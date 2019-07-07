@@ -473,33 +473,48 @@ a:hover {
 
 main h1 {
     display: block;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: normal;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
 main h2 {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: normal;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
 main h3 {
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: normal;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
 main h4 {
-    font-size: 12px;
-    font-weight: bold;
-    font-style: italic;
+    font-size: 18px;
+    font-weight: normal;
     color: #536161;
     margin: 0px;
     margin-top: 20px;
+}
+
+main h5 {
+    font-size: 16px;
+    font-weight: normal;
+    color: #536161;
+    margin: 0px;
+    margin-top: 15px;
+}
+
+main h6 {
+    font-size: 15px;
+    font-weight: normal;
+    color: #536161;
+    margin: 0px;
+    margin-top: 10px;
 }
 
 .learn-more:after {
@@ -720,7 +735,6 @@ footer {
     width: 100%;
     left: 0px;
     padding: 40px 50px;
-    
     text-align: center;
 }
 
@@ -1982,6 +1996,7 @@ select {
 .grid .row .row.tux-message,
 .grid .row .row.tux-message-item-compact {
     width: 100%;
+    display: block;
 }
 
 .row.uls-search {
@@ -1999,4 +2014,97 @@ select {
 
 .center .floatnone {
     text-align: center;
+}
+
+.menuchoice, .pager li {
+    color: #232627;
+    box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.2);
+    background-image: linear-gradient(to bottom, #eff0f1, #e9eaeb);
+    position: relative;
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 2px;
+    border: solid 1px rgba(0,0,0,.1);
+    transition: background-image .2s;
+}
+
+.keycap {
+    color: #000000;
+    background-color: #e1e1e1;
+    text-shadow: none;
+    padding: 2px 5px;
+}
+
+
+code {
+    background-color: lemonchiffon;
+    padding: 2px 4px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+table.vertical-centered td {
+    padding: 8px;
+}
+
+table:not(.mw-changeslist-line) td:first-child {
+    padding-left: 0;
+    min-width: 48px;
+}
+
+.pager {
+    text-align: center;
+}
+
+.pager li {
+    display: inline-block;
+    list-style: none;
+    padding: 5px 10px;
+}
+
+.pager li a {
+    color: #232627;
+}
+
+.pager li:hover {
+    box-shadow: 1px 1px 0px 0px rgba(147, 206, 233, 0.2);
+    border: solid 1px rgba(147, 206, 233, 0.6);
+}
+
+.thumb .thumbinner, .center .floatnone img {
+    margin-bottom: 10px;
+    padding: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+
+.center .thumbinner, .tablecenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tleft .thumbinner, .floatleft a {
+    margin-right: 8px !important;
+}
+
+div.tleft, div.floatleft, table.floatleft {
+    float: left;
+    clear: left;
+}
+
+.mw-content-ltr dd, .mw-content-rtl .mw-content-ltr dd {
+    margin-left: 1.6em;
+    margin-right: 0;
+}
+
+dl, ol, ul {
+    margin-bottom: 0;
+}
+
+@media print {
+    .noprint, .mw-editsection {
+        display: none;
+    }
 }

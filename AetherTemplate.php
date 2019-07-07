@@ -79,7 +79,7 @@ class AetherTemplate extends BaseTemplate {
         $this->html( 'headelement' );
     ?>
 
-    <header id="KGlobalHeader mb-2" class="header clearfix">
+    <header id="KGlobalHeader mb-2" class="header clearfix d-print-none">
         <nav id="kHeaderNav" class="navbar navbar-expand-md container" >
             <a class="navbar-brand active" href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" id="KGlobalLogo">
                 <?php echo wfMessage( 'sitetitle' )->escaped(); ?>
@@ -221,7 +221,7 @@ class AetherTemplate extends BaseTemplate {
     </main>
 
     <!-- footer -->
-    <footer id="kFooter" class="footer">
+    <footer id="kFooter" class="footer d-print-none">
         <section id="kFooterIncome" class="container">
             <div id="kDonateForm">
                 <div class="center">
@@ -464,7 +464,7 @@ class AetherTemplate extends BaseTemplate {
 
                 case 'VIEWS':
                 ?>
-                    <div class="btn-group btn-group-sm float-right page-actions mt-2">
+                    <div class="btn-group btn-group-sm float-right page-actions mt-2 d-print-none">
                 <?php // Is closed later in the 'actions' section
                 if ( count( $this->data['view_urls'] ) > 0 ) {
                     foreach ( $this->data['view_urls'] as $link ) { ?>
