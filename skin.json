@@ -6,8 +6,8 @@
         "Carl Schwan"
     ],
     "url": "",
-    "descriptionmsg": "Aether theme for MediaWiki",
-    "namemsg": "Aether",
+    "descriptionmsg": "Aether descr",
+    "namemsg": "skinname-aether",
     "license-name": "GPL-2.0+",
     "type": "skin",
     "ConfigRegistry": {
