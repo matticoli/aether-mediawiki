@@ -522,7 +522,7 @@ class AetherTemplate extends BaseTemplate {
                 case 'SEARCH':
                 ?>
                     <form action="<?php $this->text( 'wgScript' ) ?>" id="searchform" class="form-inline mr-1">
-                        <input id="searchInput" name="search" type="search" placeholder="<?php $this->msg( 'search' ) ?>"
+                        <input id="searchInput" name="search" type="search" placeholder="<?php $this->msg( 'search' ) ?>..."
                                class="form-control" autocomplete="off"
                         <?php if( isset( $this->data['search'] ) ): ?>
                             value="<?php $this->text( 'search' ) ?>"
