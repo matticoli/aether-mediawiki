@@ -90,13 +90,14 @@ a.btn:visited {
 }
 
 .navbar-toggler {
-    height: 50px;
+    padding: 0;
+    font-size: 0;
 }
 
 .navbar-toggler:before {
     position: absolute;
     top: 0;
-    right: 20px;
+    right: 0;
     width: 42px;
     content: "=";
     color: #4d4d4d;
@@ -2161,6 +2162,22 @@ dl, ol, ul {
     background-color:lemonchiffon;
 }
 
+.form-inline .form-control {
+    width: 200px;
+}
+
+@media (max-width: 768px) {
+    #kHeaderNav .navbar-collapse .navbar-nav .nav-item a {
+        width: 100%;
+    }
+    #kHeaderNav #searchInput {
+        width: 100%;
+        margin-top: 5px;
+        margin-right: 0;
+        margin-bottom: 5px;
+        margin-left: 20px;
+    }
+}
 
 @media (prefers-color-scheme: dark) {
     .statstable > * > tr > td,
@@ -2174,9 +2191,10 @@ dl, ol, ul {
     #pagehistory li.selected,
     .statstable > * > tr > th,
     .mw-highlight,
+    .lqt_post_new_message,
     .mw-pt-languages-label, .card, footer, .lqt-post-wrapper, .ext-translate-container .tux-messagelist .tux-message-pagemode .tux-message-item-compact:hover, .uls-menu, .uls-search, .uls-lcd, .uls-languagefilter, .tux-action-bar, .contributionscores .header, table.wikitable > tr > th, table.wikitable > * > tr > th, .form-control, .form-control::placeholder {
         color: #eff0f1 !important;
-        background-color: #31363b;
+        background-color: #31363b !important;
         background: #31363b !important;
     }
     .statstable > * > tr > td:nth-child(6)[data-sort-value="0.00000"],
