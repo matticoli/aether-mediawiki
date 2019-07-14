@@ -269,9 +269,9 @@ class AetherTemplate extends BaseTemplate {
 
                 <nav class="col-sm">
                     <h3>Products</h3>
-                    <a href="/plasma-desktop">Plasma</a>
-                    <a href="/applications/">KDE Applications</a>
-                    <a href="/products/frameworks/">KDE Frameworks</a>
+                    <a href="https://kde.org/plasma-desktop">Plasma</a>
+                    <a href="https://kde.org/applications/">KDE Applications</a>
+                    <a href="https://kde.org/products/frameworks/">KDE Frameworks</a>
                     <a href="https://plasma-mobile.org/overview/">Plasma Mobile</a>
                     <a href="https://neon.kde.org/">KDE neon</a>
                     <a href="https://wikitolearn.org/" target="_blank">WikiToLearn</a>
@@ -287,7 +287,7 @@ class AetherTemplate extends BaseTemplate {
 
                 <nav class="col-sm">
                     <h3>News &amp; Press</h3>
-                    <a href="/announcements/">Announcements</a>
+                    <a href="https://kde.org/announcements/">Announcements</a>
                     <a href="https://dot.kde.org/">KDE.news</a>
                     <a href="https://planetkde.org/">Planet KDE</a>
                     <a href="https://www.kde.org/screenshots">Screenshots</a>
@@ -298,11 +298,11 @@ class AetherTemplate extends BaseTemplate {
                     <h3>Resources</h3>
                     <a href="https://community.kde.org/Main_Page">Community Wiki</a>
                     <a href="https://userbase.kde.org/">UserBase Wiki</a>
-                    <a href="/stuff/">Miscellaneous Stuff</a>
-                    <a href="/support/">Support</a>
-                    <a href="/support/international.php">International Websites</a>
-                    <a href="/download/">Download KDE Software</a>
-                    <a href="/code-of-conduct/">Code of Conduct</a>
+                    <a href="https://kde.org/stuff/">Miscellaneous Stuff</a>
+                    <a href="https://kde.org/support/">Support</a>
+                    <a href="https://kde.org/support/international.php">International Websites</a>
+                    <a href="https://kde.org/download/">Download KDE Software</a>
+                    <a href="https://kde.org/code-of-conduct/">Code of Conduct</a>
                 </nav>
 
                 <nav class="col-sm">
