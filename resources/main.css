@@ -1989,7 +1989,7 @@ select {
     font-weight: bold;
 }
 
-.mw-languages-dropdown::before {
+.mw-pt-languages-label::after {
     content: "";
     background: transparent no-repeat scroll left center;
     background-image: url(/extensions/UniversalLanguageSelector/lib/jquery.uls/images/language.png?85750);
@@ -2191,7 +2191,7 @@ dl, ol, ul {
     #pagehistory li.selected,
     .statstable > * > tr > th,
     .mw-highlight,
-    .lqt_post_new_message,
+    .lqt-post-wrapper .lqt_post_new_message,
     .mw-pt-languages-label, .card, footer, .lqt-post-wrapper, .ext-translate-container .tux-messagelist .tux-message-pagemode .tux-message-item-compact:hover, .uls-menu, .uls-search, .uls-lcd, .uls-languagefilter, .tux-action-bar, .contributionscores .header, table.wikitable > tr > th, table.wikitable > * > tr > th, .form-control, .form-control::placeholder {
         color: #eff0f1 !important;
         background-color: #31363b !important;
@@ -2210,5 +2210,28 @@ dl, ol, ul {
     pre.pre-input {
         background-color: #bdc3c7;
         color: black !important;
+    }
+
+    .alert-warning {
+        border-color: #f67400;
+        color: #eff0f1;
+        background-color: rgba(246,116,0,0.2);
+    }
+
+    .alert-error {
+        border-color: rgb(218,68,83);
+        color: #eff0f1;
+        background-color: rgba(218,68,83,0.2);
+    }
+
+    .alert-success {
+        background-color: #2f4e42;
+        color: #eff0f1;
+        border-color: #27ae60;
+    }
+
+    .alert-success img,
+    .mw-pt-languages-label::after {
+        filter: invert(1);
     }
 }

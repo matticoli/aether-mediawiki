@@ -331,6 +331,7 @@ class AetherTemplate extends BaseTemplate {
 
     <?php $this->printTrail(); ?>
     <script type="text/javascript" src="https://cdn.kde.org/aether/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/skins/Aether/ressources/jquery.ba-throttle-debounce.min.js"></script>
     <script type="text/javascript" src="https://cdn.kde.org/aether/js/popper.min.js"></script>
     <script type="text/javascript" src="https://cdn.kde.org/aether/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/skins/Aether/resources/main.js"></script>
