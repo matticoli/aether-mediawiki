@@ -225,7 +225,7 @@ class AetherTemplate extends BaseTemplate {
         <section id="kFooterIncome" class="container">
             <div id="kDonateForm">
                 <div class="center">
-                    <h3>Donate to KDE <a href="/community/donations/index.php#money" target="_blank">Why Donate?</a></h3>
+                    <h3>Donate to KDE <a href="https://kde.org/community/donations/index.php#money" target="_blank">Why Donate?</a></h3>
                     <form action="https://www.paypal.com/en_US/cgi-bin/webscr" method="post" onsubmit="return amount.value >= 2 || window.confirm('Your donation is smaller than 2€. This means that most of your donation\nwill end up in processing fees. Do you want to continue?');">
                             <input type="hidden" name="cmd" value="_donations">
                             <input type="hidden" name="lc" value="GB">
@@ -240,14 +240,14 @@ class AetherTemplate extends BaseTemplate {
                             <button type="submit" id="donateSubmit" data-_extension-text-contrast="">Donate via PayPal</button>
                     </form>
 
-                    <a href="/community/donations/others" id="otherWaysDonate" target="_blank">Other ways to donate</a>
+                    <a href="https://kde.org/community/donations/others" id="otherWaysDonate" target="_blank">Other ways to donate</a>
                 </div>
             </div>
             <div id="kMetaStore">
                 <div class="center">
                     <h3>Visit the KDE MetaStore</h3>
                     <p>Show your love for KDE! Purchase books, mugs, apparel, and more to support KDE.</p>
-                    <a href="/stuff/metastore" class="button">Click here to browse</a>
+                    <a href="https://kde.org/stuff/metastore" class="button">Click here to browse</a>
                 </div>
             </div>
         </section>
@@ -321,7 +321,7 @@ class AetherTemplate extends BaseTemplate {
                     Maintained by <a href="mailto:kde-webmaster@kde.org">KDE Webmasters</a>
                 </small>
                 <small class="col-8" style="text-align: right;">
-                    KDE<sup>®</sup> and <a href="/media/images/trademark_kde_gear_black_logo.png">the K Desktop Environment<sup>®</sup> logo</a> are registered trademarks of <a href="https://ev.kde.org/" title="Homepage of the KDE non-profit Organization">KDE e.V.</a> |
+                    KDE<sup>®</sup> and <a href="https://kde.org/media/images/trademark_kde_gear_black_logo.png">the K Desktop Environment<sup>®</sup> logo</a> are registered trademarks of <a href="https://ev.kde.org/" title="Homepage of the KDE non-profit Organization">KDE e.V.</a> |
                     <a href="https://www.kde.org/community/whatiskde/impressum">Legal</a>
                 </small>
             </div>
