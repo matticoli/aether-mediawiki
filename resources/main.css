@@ -2010,6 +2010,7 @@ select {
 }
 
 .grid .row .row.tux-message,
+.tux-textarea-translation,
 .grid .row .row.tux-message-item-compact {
     width: 100%;
     display: block;
@@ -2150,7 +2151,7 @@ dl, ol, ul {
     font-weight: bold;
 }
 
-.alert.d-flex img {
+.alert.d-flex .floatleft img {
     min-width: 40px;
 }
 
@@ -2164,6 +2165,18 @@ dl, ol, ul {
 
 .form-inline .form-control {
     width: 200px;
+}
+
+a.new {
+    color: rgb(218,68,83);
+}
+
+.thumbinner {
+    max-width: 100%;
+}
+
+.mw-plusminus-pos {
+    color: #27ae60;
 }
 
 @media (max-width: 768px) {
@@ -2188,6 +2201,7 @@ dl, ol, ul {
     #kHeaderNav .navbar-collapse a, pre, .tux-messagelist .tux-message-pagemode .tux-pagemode-source, .tux-messagelist .tux-message-pagemode .tux-pagemode-translation, .tux-editor-header, .tux-statsbar-info, .ext-translate-language-selector-label, .contributionscores-title {
         color: #eff0f1 !important;
     }
+    .diff-context,
     #pagehistory li.selected,
     .statstable > * > tr > th,
     .mw-highlight,
@@ -2196,6 +2210,12 @@ dl, ol, ul {
         color: #eff0f1 !important;
         background-color: #31363b !important;
         background: #31363b !important;
+    }
+    a {
+        color: #5daee9;
+    }
+    a:hover {
+        color: #7daee9;
     }
     .statstable > * > tr > td:nth-child(6)[data-sort-value="0.00000"],
     h1, h2, h3, h4, h5, h6, #kLegal, .lqt-thread-toolbar-timestamp, .lqt-thread-actions-icon, .page-info, .tux-breadcrumb, .tux-message-selector li a{
@@ -2207,6 +2227,12 @@ dl, ol, ul {
     .form-control {
         border: 1px solid #31363b;
     }
+
+    .diff-addedline .diffchange,
+    .diff-deletedline .diffchange {
+        color: black;
+    }
+
     pre.pre-input {
         background-color: #bdc3c7;
         color: black !important;
@@ -2230,8 +2256,19 @@ dl, ol, ul {
         border-color: #27ae60;
     }
 
+    .alert-info {
+        background-color: rgba(61,174,233, 0.2);
+        color: #eff0f1;
+        border-color: rgb(61,174,233);
+    }
+
+    .icon-dark-invert img,
     .alert-success img,
     .mw-pt-languages-label::after {
         filter: invert(1);
+    }
+
+    .mono-icon img {
+        background-color: white;
     }
 }
