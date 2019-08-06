@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * Neverland - Modern version of MonoBook with fresh look and many usability
  * improvements.
