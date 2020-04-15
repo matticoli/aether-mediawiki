@@ -56,6 +56,7 @@ class SkinAether extends SkinTemplate {
 
         $out->addStyle( $urlPackage->getUrl('aether-devel/version/bootstrap.css'), 'all' );
         $out->addStyle( $urlPackage->getUrl('aether-devel/version/aether-mediawiki.css'), 'all' );
+        $out->addStyle( $urlPackage->getUrl('aether-devel/version/aether-sidebar.css'), 'all' );
     }
 
     /**
