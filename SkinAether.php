@@ -1,13 +1,16 @@
 <?php
 /**
- * Neverland - Modern version of MonoBook with fresh look and many usability
- * improvements.
- *
+ * Aether
+
  * @todo document
  * @file
  * @ingroup Skins
  */
 
+require_once __DIR__.'/vendor/autoload.php';
+require_once 'JsonManifestNetworkStrategy.php';
+
+use Symfony\Component\Asset\UrlPackage;
 
 /**
  * SkinTemplate class for Neverland skin
@@ -46,8 +49,14 @@ class SkinAether extends SkinTemplate {
      * @param $out OutputPage object
      */
     function setupSkinUserCss( OutputPage $out ){
-        $out->addStyle( 'https://cdn.kde.org/aether/css/bootstrap.min.css', 'all' );
-        $out->addStyle(  $this->stylename . '/resources/main.css', 'all' );
+        $urlPackage = new UrlPackage(
+            'https://cdn.kde.org/',
+            new JsonManifestNetworkVersionStrategy('https://cdn.kde.org/aether-devel/version/manifest.json')
+        );
+
+        $out->addStyle( $urlPackage->getUrl('aether-devel/version/bootstrap.css'), 'all' );
+        $out->addStyle( $urlPackage->getUrl('aether-devel/version/aether-mediawiki.css'), 'all' );
+        $out->addStyle( $urlPackage->getUrl('aether-devel/version/aether-sidebar.css'), 'all' );
     }
 
     /**
