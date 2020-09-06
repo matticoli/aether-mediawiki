@@ -11,6 +11,8 @@ require_once __DIR__.'/vendor/autoload.php';
 require_once 'JsonManifestNetworkStrategy.php';
 
 use Symfony\Component\Asset\UrlPackage;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Contracts\Cache\ItemInterface;
 
 /**
  * SkinTemplate class for Neverland skin
@@ -49,14 +51,36 @@ class SkinAether extends SkinTemplate {
      * @param $out OutputPage object
      */
     function setupSkinUserCss( OutputPage $out ){
-        $urlPackage = new UrlPackage(
-            'https://cdn.kde.org/',
-            new JsonManifestNetworkVersionStrategy('https://cdn.kde.org/aether-devel/version/manifest.json')
-        );
+        $cache = new FilesystemAdapter();
 
-        $out->addStyle( $urlPackage->getUrl('aether-devel/version/bootstrap.css'), 'all' );
-        $out->addStyle( $urlPackage->getUrl('aether-devel/version/aether-mediawiki.css'), 'all' );
-        $out->addStyle( $urlPackage->getUrl('aether-devel/version/aether-sidebar.css'), 'all' );
+        $cdn = 'https://cdn.kde.org';
+        $cdnPathPrefix = 'aether-devel';
+
+        $cdnManifest = $cdn . '/' . $cdnPathPrefix . '/version/manifest.json';
+
+        $cdnCSSFiles = ['/version/bootstrap.css', '/version/aether-mediawiki.css', '/version/aether-sidebar.css'];
+        $cdnJSFiles = [];
+
+        // $cache->delete('cdnFiles' . str_replace('/', '', implode('', $cdnCSSFiles) . implode('', $cdnJSFiles)));
+        ini_set('realpath_cache_size', 0);
+
+        $cdnFiles = $cache->get('cdnFiles' . str_replace('/', '', implode('', $cdnCSSFiles) . implode('', $cdnJSFiles)), function (ItemInterface $item) use ($cdnManifest, $cdnPathPrefix, $cdnCSSFiles, $cdnJSFiles) {
+            $item->expiresAfter(600);
+            $fileContent = file_get_contents($cdnManifest."?e");
+            $manifestData = json_decode($fileContent, true);
+
+            $convertPaths = function($cdnCSSFile) use ($cdnPathPrefix, $manifestData)  {
+                return $manifestData[$cdnPathPrefix . $cdnCSSFile];
+            };
+            return [
+                'css' => array_map($convertPaths, $cdnCSSFiles),
+                'js' => array_map($convertPaths, $cdnJSFiles),
+            ];
+        });
+
+        foreach ($cdnFiles['css'] as $cssFile) {
+            $out->addStyle($cdn . $cssFile, 'all' );
+        }
     }
 
     /**

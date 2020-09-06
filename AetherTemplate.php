@@ -81,17 +81,23 @@ class AetherTemplate extends BaseTemplate {
 
   <main class="body">
     <header class="header clearfix d-print-none">
-      <nav class="navbar">
-        <div class="breadcrumb navbar-nav">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <li class="breadcrumb-link">
-            <?php $this->html( 'title' ) ?>
-          </li>
-          <?php $this->renderNavigation( 'SEARCH' ); ?>
-        <div>
+      <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarPersonal" aria-controls="navbarPersonal" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarPersonal">
+          <ul class="navbar-nav mr-auto">
+            <?php foreach( $this->getPersonalTools() as $key => $item ) {
+              if ($key === 'notifications-alert' || $key === 'notifications-notice') {
+                  $item['class'] = 'd-flex align-items-center position-static';
+              } else {
+                  $item['class'] = 'nav-item';
+              }
+              echo $this->makeListItem( $key, $item, ['link-class' => 'nav-link']);
+            } ?>
+          </ul>
+          <?php $this->renderNavigation('SEARCH'); ?>
+        </div>
       </nav>
     </header>
     <aside class="sidebar noprint" valign="top">
@@ -120,7 +126,6 @@ class AetherTemplate extends BaseTemplate {
       <?php
         $this->renderNavigation('VARIANTS');
         $this->renderPortals($this->data['sidebar']);
-        $this->renderNavigation('PERSONAL');
       ?>
     </aside>
     <article class="content">
@@ -144,7 +149,12 @@ class AetherTemplate extends BaseTemplate {
         <div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
       <?php endif; ?>
 
-      <?php $this->html( 'bodycontent' ) ?>
+      <div id="content">
+        <h1 class="mt-1 h2" id="firstHeading"><?php $this->html( 'title' ) ?></h1>
+        <div id="mw-content-text">
+          <?php $this->html('bodycontent') ?>
+        </div>
+      </div>
 
       <?php if ( $this->data['printfooter'] ): ?>
         <div class="printfooter">
@@ -180,118 +190,118 @@ class AetherTemplate extends BaseTemplate {
       ?>
       </div>
 
-      <footer id="kFooter" class="footer d-print-none">
-        <section id="kFooterIncome" class="container">
-          <div id="kDonateForm">
-            <div class="center">
-              <h3>Donate to KDE <a href="https://kde.org/community/donations/index.php#money" target="_blank">Why Donate?</a></h3>
-              <form action="https://www.paypal.com/en_US/cgi-bin/webscr" method="post" onsubmit="return amount.value >= 2 || window.confirm('Your donation is smaller than 2€. This means that most of your donation\nwill end up in processing fees. Do you want to continue?');">
-                 <input type="hidden" name="cmd" value="_donations">
-                 <input type="hidden" name="lc" value="GB">
-                 <input type="hidden" name="item_name" value="Development and communication of KDE software">
-                 <input type="hidden" name="custom" value="//kde.org//donation_box">
-                 <input type="hidden" name="currency_code" value="EUR">
-                 <input type="hidden" name="cbt" value="Return to kde.org">
-                 <input type="hidden" name="return" value="https://kde.org/community/donations/thanks_paypal">
-                 <input type="hidden" name="notify_url" value="https://kde.org/community/donations/notify.php">
-                 <input type="hidden" name="business" value="kde-ev-paypal@kde.org">
-                 <input type="text" name="amount" value="20.00" id="donateAmountField" data-_extension-text-contrast=""> €
-                 <button type="submit" id="donateSubmit" data-_extension-text-contrast="">Donate via PayPal</button>
-              </form>
-
-              <a href="https://kde.org/community/donations/others" id="otherWaysDonate" target="_blank">Other ways to donate</a>
-            </div>
-          </div>
-          <div id="kMetaStore">
-            <div class="center">
-              <h3>Visit the KDE MetaStore</h3>
-              <p>Show your love for KDE! Purchase books, mugs, apparel, and more to support KDE.</p>
-              <a href="https://kde.org/stuff/metastore" class="button">Click here to browse</a>
-           </div>
-          </div>
-        </section>
-        <section id="kLinks" class="container">
-          <div class="row">
-            <nav class="col-sm">
-              <h3>About Wiki</h3>
-              <?php
-                foreach($this->getFooterLinks() as $category => $links) {
-                  if ($category == 'places') {
-                    foreach($links as $link) {
-                      $this->html($link);
-                    }
-                  }
-                }
-              ?>
-            </nav>
-
-            <nav class="col-sm">
-              <h3>Products</h3>
-              <a href="https://kde.org/plasma-desktop">Plasma</a>
-              <a href="https://kde.org/applications/">KDE Applications</a>
-              <a href="https://kde.org/products/frameworks/">KDE Frameworks</a>
-              <a href="https://plasma-mobile.org/overview/">Plasma Mobile</a>
-              <a href="https://neon.kde.org/">KDE neon</a>
-              <a href="https://wikitolearn.org/" target="_blank">WikiToLearn</a>
-            </nav>
-
-            <nav class="col-sm">
-              <h3>Develop</h3>
-              <a href="https://techbase.kde.org/">TechBase Wiki</a>
-              <a href="https://api.kde.org/">API Documentation</a>
-              <a href="https://doc.qt.io/" target="_blank">Qt Documentation</a>
-              <a href="https://inqlude.org/" target="_blank">Inqlude Documentation</a>
-            </nav>
-
-            <nav class="col-sm">
-              <h3>News &amp; Press</h3>
-              <a href="https://kde.org/announcements/">Announcements</a>
-              <a href="https://dot.kde.org/">KDE.news</a>
-              <a href="https://planetkde.org/">Planet KDE</a>
-              <a href="https://www.kde.org/screenshots">Screenshots</a>
-              <a href="https://www.kde.org/contact/">Press Contact</a>
-            </nav>
-
-            <nav class="col-sm">
-              <h3>Resources</h3>
-              <a href="https://community.kde.org/Main_Page">Community Wiki</a>
-              <a href="https://userbase.kde.org/">UserBase Wiki</a>
-              <a href="https://kde.org/stuff/">Miscellaneous Stuff</a>
-              <a href="https://kde.org/support/">Support</a>
-              <a href="https://kde.org/support/international.php">International Websites</a>
-              <a href="https://kde.org/download/">Download KDE Software</a>
-              <a href="https://kde.org/code-of-conduct/">Code of Conduct</a>
-            </nav>
-
-            <nav class="col-sm">
-              <h3>Destinations</h3>
-              <a href="https://store.kde.org/">KDE Store</a>
-              <a href="https://ev.kde.org/">KDE e.V.</a>
-              <a href="https://www.kde.org/community/whatiskde/kdefreeqtfoundation.php">KDE Free Qt Foundation</a>
-              <a href="https://timeline.kde.org/">KDE Timeline</a>
-            </nav>
-          </div>
-        </section>
-        <section id="kLegal" class="container">
-          <div class="row">
-            <small class="col-4">
-              Maintained by <a href="mailto:kde-www@kde.org">KDE Webmasters</a>
-            </small>
-            <small class="col-8" style="text-align: right;">
-              KDE<sup>®</sup> and <a href="https://kde.org/media/images/trademark_kde_gear_black_logo.png">the K Desktop Environment<sup>®</sup> logo</a> are registered trademarks of <a href="https://ev.kde.org/" title="Homepage of the KDE non-profit Organization">KDE e.V.</a> |
-              <a href="https://www.kde.org/community/whatiskde/impressum">Legal</a>
-            </small>
-          </div>
-        </section>
-      </footer>
     </article>
   </main>
+  <footer id="kFooter" class="footer d-print-none">
+    <section id="kFooterIncome" class="container">
+      <div id="kDonateForm">
+        <div class="center">
+          <h3>Donate to KDE <a href="https://kde.org/community/donations/index.php#money" target="_blank">Why Donate?</a></h3>
+          <form action="https://www.paypal.com/en_US/cgi-bin/webscr" method="post" onsubmit="return amount.value >= 2 || window.confirm('Your donation is smaller than 2€. This means that most of your donation\nwill end up in processing fees. Do you want to continue?');">
+             <input type="hidden" name="cmd" value="_donations">
+             <input type="hidden" name="lc" value="GB">
+             <input type="hidden" name="item_name" value="Development and communication of KDE software">
+             <input type="hidden" name="custom" value="//kde.org//donation_box">
+             <input type="hidden" name="currency_code" value="EUR">
+             <input type="hidden" name="cbt" value="Return to kde.org">
+             <input type="hidden" name="return" value="https://kde.org/community/donations/thanks_paypal">
+             <input type="hidden" name="notify_url" value="https://kde.org/community/donations/notify.php">
+             <input type="hidden" name="business" value="kde-ev-paypal@kde.org">
+             <input type="text" name="amount" value="20.00" id="donateAmountField" data-_extension-text-contrast=""> €
+             <button type="submit" id="donateSubmit" data-_extension-text-contrast="">Donate via PayPal</button>
+          </form>
+
+          <a href="https://kde.org/community/donations/others" id="otherWaysDonate" target="_blank">Other ways to donate</a>
+        </div>
+      </div>
+      <div id="kMetaStore">
+        <div class="center">
+          <h3>Visit the KDE MetaStore</h3>
+          <p>Show your love for KDE! Purchase books, mugs, apparel, and more to support KDE.</p>
+          <a href="https://kde.org/stuff/metastore" class="button">Click here to browse</a>
+       </div>
+      </div>
+    </section>
+    <section id="kLinks" class="container">
+      <div class="row">
+        <nav class="col-sm">
+          <h3>About Wiki</h3>
+          <?php
+            foreach($this->getFooterLinks() as $category => $links) {
+              if ($category == 'places') {
+                foreach($links as $link) {
+                  $this->html($link);
+                }
+              }
+            }
+          ?>
+        </nav>
+
+        <nav class="col-sm">
+          <h3>Products</h3>
+          <a href="https://kde.org/plasma-desktop">Plasma</a>
+          <a href="https://kde.org/applications/">KDE Applications</a>
+          <a href="https://kde.org/products/frameworks/">KDE Frameworks</a>
+          <a href="https://plasma-mobile.org/overview/">Plasma Mobile</a>
+          <a href="https://neon.kde.org/">KDE neon</a>
+          <a href="https://wikitolearn.org/" target="_blank">WikiToLearn</a>
+        </nav>
+
+        <nav class="col-sm">
+          <h3>Develop</h3>
+          <a href="https://techbase.kde.org/">TechBase Wiki</a>
+          <a href="https://api.kde.org/">API Documentation</a>
+          <a href="https://doc.qt.io/" target="_blank">Qt Documentation</a>
+          <a href="https://inqlude.org/" target="_blank">Inqlude Documentation</a>
+        </nav>
+
+        <nav class="col-sm">
+          <h3>News &amp; Press</h3>
+          <a href="https://kde.org/announcements/">Announcements</a>
+          <a href="https://dot.kde.org/">KDE.news</a>
+          <a href="https://planetkde.org/">Planet KDE</a>
+          <a href="https://www.kde.org/screenshots">Screenshots</a>
+          <a href="https://www.kde.org/contact/">Press Contact</a>
+        </nav>
+
+        <nav class="col-sm">
+          <h3>Resources</h3>
+          <a href="https://community.kde.org/Main_Page">Community Wiki</a>
+          <a href="https://userbase.kde.org/">UserBase Wiki</a>
+          <a href="https://kde.org/stuff/">Miscellaneous Stuff</a>
+          <a href="https://kde.org/support/">Support</a>
+          <a href="https://kde.org/support/international.php">International Websites</a>
+          <a href="https://kde.org/download/">Download KDE Software</a>
+          <a href="https://kde.org/code-of-conduct/">Code of Conduct</a>
+        </nav>
+
+        <nav class="col-sm">
+          <h3>Destinations</h3>
+          <a href="https://store.kde.org/">KDE Store</a>
+          <a href="https://ev.kde.org/">KDE e.V.</a>
+          <a href="https://www.kde.org/community/whatiskde/kdefreeqtfoundation.php">KDE Free Qt Foundation</a>
+          <a href="https://timeline.kde.org/">KDE Timeline</a>
+        </nav>
+      </div>
+    </section>
+    <section id="kLegal" class="container">
+      <div class="row">
+        <small class="col-4">
+          Maintained by <a href="mailto:kde-www@kde.org">KDE Webmasters</a>
+        </small>
+        <small class="col-8" style="text-align: right;">
+          KDE<sup>®</sup> and <a href="https://kde.org/media/images/trademark_kde_gear_black_logo.png">the K Desktop Environment<sup>®</sup> logo</a> are registered trademarks of <a href="https://ev.kde.org/" title="Homepage of the KDE non-profit Organization">KDE e.V.</a> |
+          <a href="https://www.kde.org/community/whatiskde/impressum">Legal</a>
+        </small>
+      </div>
+    </section>
+  </footer>
 
   <?php $this->printTrail(); ?>
   <!-- <script type="text/javascript" src="https://cdn.kde.org/aether/js/jquery.min.js"></script>
   <script type="text/javascript" src="/skins/Aether/resources/jquery.ba-throttle-debounce.min.js"></script>
-  <script type="text/javascript" src="https://cdn.kde.org/aether/js/popper.min.js"></script>
   <script type="text/javascript" src="/skins/Aether/resources/main.js"></script> -->
+  <script type="text/javascript" src="https://cdn.kde.org/aether-devel/bootstrap.js"></script>
   <script>
     const toggler = document.querySelector('.navbar-toggler');
     const body = document.querySelector('.body');
@@ -364,7 +374,7 @@ class AetherTemplate extends BaseTemplate {
               }
 
               if ( $hook !== null ) {
-                wfRunHooks( $hook, array( &$this, true ) );
+                Hooks::run($hook, array(&$this, true));
               }
             echo "</ul>";
           } else {
@@ -455,31 +465,23 @@ class AetherTemplate extends BaseTemplate {
 
         case 'ACTIONS':
           foreach ($this->data['action_urls'] as $link) { ?>
-            <a <?= $link['attributes'] ?> href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>>
+            <a id="ca-edit" <?= $link['attributes'] ?> href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>>
               <?php echo htmlspecialchars($link['text']) ?>
             </a>
           <?php
           }
           break;
 
-        case 'PERSONAL':
-          if ( count( $this->data['personal_urls'] ) > 0 ) {
-            ?>
-            <div class="menu-box">
-              <div class="menu-title">
-                <h2><?php $this->msg( 'personaltools' ) ?></h2>
-              </div>
-              <div class="menu-content">
-                <ul>
-                  <?php foreach( $this->getPersonalTools() as $key => $item ) { ?>
-                    <?php echo $this->makeListItem( $key, $item ); ?>
-                  <?php } ?>
-                </ul>
-              </div>
-            </div>
-            <?php
-          }
-          break;
+        case 'PERSONAL': ?>
+          <div class="collapse navbar-collapse" id="navbarPersonal">
+            <ul class="navbar-nav mr-auto">
+              <?php foreach( $this->getPersonalTools() as $key => $item ) {
+                $item['class'] = 'nav-item';
+                echo $this->makeListItem( $key, $item, ['link-class' => 'nav-link']);
+              } ?>
+            </ul>
+          </div>
+          <?php break;
 
         case 'SEARCH': ?>
           <form action="<?php $this->text( 'wgScript' ) ?>" id="searchform" class="form-inline ml-auto">
