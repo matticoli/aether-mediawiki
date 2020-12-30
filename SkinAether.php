@@ -59,7 +59,7 @@ class SkinAether extends SkinTemplate {
         $cdnManifest = $cdn . '/' . $cdnPathPrefix . '/version/manifest.json';
 
         $cdnCSSFiles = ['/version/bootstrap.css', '/version/aether-mediawiki.css', '/version/aether-sidebar.css'];
-        $cdnJSFiles = [];
+        $cdnJSFiles = ['/version/bootstrap.js'];
 
         // $cache->delete('cdnFiles' . str_replace('/', '', implode('', $cdnCSSFiles) . implode('', $cdnJSFiles)));
         ini_set('realpath_cache_size', 0);
@@ -79,7 +79,10 @@ class SkinAether extends SkinTemplate {
         });
 
         foreach ($cdnFiles['css'] as $cssFile) {
-            $out->addStyle($cdn . $cssFile, 'all' );
+            $out->addStyle($cdn . $cssFile, 'all');
+        }
+        foreach ($cdnFiles['js'] as $jsFile) {
+            $out->addScriptFile($cdn . $jsFile);
         }
     }
 

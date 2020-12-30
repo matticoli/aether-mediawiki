@@ -79,6 +79,15 @@ class AetherTemplate extends BaseTemplate {
     $this->html( 'headelement' );
 ?>
 
+  <style>
+.navbar .navbar-collapse .nav-item a.nav-link {
+  padding: 0 10px;
+}
+#pt-notifications-alert, #pt-notifications-notice {
+  display: flex;
+  align-items: center;
+}
+  </style>
   <main class="body">
     <header class="header clearfix d-print-none">
       <nav class="navbar navbar-expand-lg">
@@ -298,10 +307,8 @@ class AetherTemplate extends BaseTemplate {
   </footer>
 
   <?php $this->printTrail(); ?>
-  <!-- <script type="text/javascript" src="https://cdn.kde.org/aether/js/jquery.min.js"></script>
   <script type="text/javascript" src="/skins/Aether/resources/jquery.ba-throttle-debounce.min.js"></script>
-  <script type="text/javascript" src="/skins/Aether/resources/main.js"></script> -->
-  <script type="text/javascript" src="https://cdn.kde.org/aether-devel/bootstrap.js"></script>
+  <script type="text/javascript" src="/skins/Aether/resources/main.js"></script>
   <script>
     const toggler = document.querySelector('.navbar-toggler');
     const body = document.querySelector('.body');
