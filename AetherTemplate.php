@@ -46,7 +46,7 @@ class AetherTemplate extends BaseTemplate {
         }
 
         $xmlID = isset($link['id']) ? $link['id'] : 'ca-' . $xmlID;
-        $nav[$section][$key]['attributes'] = ' id="' . Sanitizer::escapeId( $xmlID ) . '"';
+        $nav[$section][$key]['attributes'] = ' id="' . Sanitizer::escapeIdForAttribute( $xmlID ) . '"';
 
         if ($link['class']) {
           $nav[$section][$key]['attributes'] = $nav[$section][$key]['attributes'] .
@@ -349,7 +349,7 @@ class AetherTemplate extends BaseTemplate {
         case 'SEARCH':
           break;
         case 'TOOLBOX':
-          $this->renderPortal( 'tb', $this->getToolbox(), 'toolbox', 'SkinTemplateToolboxEnd' );
+          $this->get('sidebar')['TOOLBOX'];
           break;
         case 'LANGUAGES':
           if ($this->data['language_urls']) {
@@ -369,7 +369,7 @@ class AetherTemplate extends BaseTemplate {
     }
     ?>
     <div class="menu-box">
-      <div class="menu-title" id='<?php echo Sanitizer::escapeId( "p-$name" ) ?>' <?php echo Linker::tooltip( 'p-' . $name ) ?>>
+      <div class="menu-title" id='<?php echo Sanitizer::escapeIdForAttribute( "p-$name" ) ?>' <?php echo Linker::tooltip( 'p-' . $name ) ?>>
         <h2><?php $msgObj = wfMessage( $msg ); echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg ); ?></h2>
       </div>
       <div class="menu-content">
