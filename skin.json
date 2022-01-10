@@ -27,7 +27,6 @@
     },
     "config": {
         "AetherUseSimpleSearch": true,
-        "AetherUseIconWatch": true,
         "AetherResponsive": false
     },
     "manifest_version": 1
