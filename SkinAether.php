@@ -44,13 +44,6 @@ class SkinAether extends SkinTemplate {
         $min = $this->getRequest()->getFuzzyBool( 'debug' ) ? '' : '.min';
         $out->addModules( array('skins.aether') );
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no' );
-    }
-
-    /**
-     * Load skin and user CSS files in the correct order
-     * @param $out OutputPage object
-     */
-    function setupSkinUserCss( OutputPage $out ){
         $cache = new FilesystemAdapter();
 
         $cdn = 'https://cdn.kde.org';
