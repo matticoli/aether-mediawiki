@@ -1,3 +1,8 @@
+## A generic fork of KDE's Aether-Mediawiki skin
+https://invent.kde.org/websites/aether-mediawiki/
+
+Adapted to remove KDE-specific elements for general use
+
 ## Aether MediaWiki
 
 This MediaWiki theme follows KDE branding guidelines and is a running
